@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.swjtuhc.demo.mapper.UsersMapper">
+	
+	<insert id="inserUsers" parameterType="edu.swjtuhc.demo.model.Users">
+		insert into users
+		(uName,uPwd,uSex,uPhone,uEmail,uQQ,uImage)
+		values
+		(#{uName},#{uPwd},#{uSex},#{uPhone},#{uEmail},#{uQQ},#{uImage})
+	</insert>
+	
+	<select id="selectUsersByUsersname" parameterType="java.lang.String" resultType="edu.swjtuhc.demo.model.Users">
+		select * from users
+		where
+		uName = #{uName}
+	</select>
+	
+	<resultMap type="edu.swjtuhc.demo.model.Users" id="users_result">
+		<id column="uID" property="uID" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+		<result column="uName" property="uName" javaType="java.lang.String" jdbcType="VARCHAR"/>
+		<result column="uPwd" property="uPwd" javaType="java.lang.String" jdbcType="VARCHAR"/>
+		<result column="uSex" property="uSex" javaType="java.lang.String" jdbcType="VARCHAR"/>
+		<result column="uPhone" property="uPhone" javaType="java.lang.String" jdbcType="VARCHAR"/>
+		<result column="uEmail" property="uEmail" javaType="java.lang.String" jdbcType="VARCHAR"/>
+		<result column="uQQ" property="uQQ" javaType="java.lang.String" jdbcType="VARCHAR"/>
+		<result column="uImage" property="uImage" javaType="java.lang.String" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<select id="selectAllUsersList" resultMap="users_result">
+		select * from users
+	</select>
+</mapper>

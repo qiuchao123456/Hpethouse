@@ -34,4 +34,14 @@ public class UsersController {
 			//调用Service层
 			return usersService.getUsersList();
 		}
+	//用户登录
+		@RequestMapping("/login")
+		public JSONObject login(@RequestBody Users users) {
+			JSONObject result = new JSONObject();
+			
+			//调用Service层
+			int i = usersService.login(users);
+			result.put("state", i);
+			return result;
+		}
 }

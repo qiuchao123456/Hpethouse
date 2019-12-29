@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.swjtuhc.demo.mapper.AdminusersMapper">
+
+	<select id="selectAdminusersByAdminusersname" parameterType="java.lang.String" resultType="edu.swjtuhc.demo.model.Adminusers">
+		select * from adminusers
+		where
+		aName = #{aName}
+	</select>
+	
+	<select id="adminlogin" parameterType="edu.swjtuhc.demo.model.Adminusers">
+		select aNnam,aPwd from adminusers
+		where
+		aName = #{aName}
+		and 
+		aPwd = #{aPwd}
+	</select>
+	
+	<select id="selectAllAdminusersList" resultMap="adminusers_result">
+		select * from adminusers
+	</select>
+	
+	<resultMap type="edu.swjtuhc.demo.model.Adminusers" id="adminusers_result">
+		<id column="u_id" property="u_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+		<result column="aName" property="aName" javaType="java.lang.String" jdbcType="VARCHAR"/>
+		<result column="aPwd" property="aPwd" javaType="java.lang.String" jdbcType="VARCHAR"/>
+		<result column="age" property="age" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+		<result column="sex" property="gender" javaType="java.lang.String" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	</mapper>

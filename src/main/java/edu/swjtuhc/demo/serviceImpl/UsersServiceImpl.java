@@ -36,5 +36,19 @@ public class UsersServiceImpl implements UsersService{
 		// TODO Auto-generated method stub
 		return usersMapper.selectAllUsersList();
 	}
-	
+
+	@Override
+	public int login(Users users) {
+		// TODO Auto-generated method stub
+		//调用mapper实现登录
+		Users u0=usersMapper.selectUsersByUsersname(users.getuName());
+		int i=-1;
+		if(u0==null) {
+			i=2;
+		}else {
+			i=1;
+		}
+		
+		return i;
+	}
 }

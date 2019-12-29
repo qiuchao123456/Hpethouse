@@ -29,4 +29,17 @@
 	<select id="selectAllUsersList" resultMap="users_result">
 		select * from users
 	</select>
+	
+	<select id="loginUsers" parameterType="edu.swjtuhc.demo.model.Users">
+		select uNnam,uPwd from users
+		where
+		uName = #{uName}
+		and 
+		uPwd = #{uPwd}
+	</select>
+	
+	<resultMap type="edu.swjtuhc.demo.model.Users" id="loginUsers_result">
+		<result column="uName" property="uName" javaType="java.lang.String" jdbcType="VARCHAR"/>
+		<result column="uPwd" property="uPwd" javaType="java.lang.String" jdbcType="VARCHAR"/>
+	</resultMap>
 </mapper>

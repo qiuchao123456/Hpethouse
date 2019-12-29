@@ -11,8 +11,12 @@ import edu.swjtuhc.demo.model.Users;
 public interface UsersMapper {
 	
 	public Users selectUsersByUsersname(String uName);
+	public Users selectAdminusersByUsersname(String uName);
 	
 	public int inserUsers(Users users);
 	
 	public List<Users> selectAllUsersList();
+	
+	public int loginUsers(Users users);
+	
 }

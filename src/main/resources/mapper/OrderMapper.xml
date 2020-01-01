@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.swjtuhc.demo.mapper.OrderMapper">
+
+	<insert id="inserOrder" parameterType="edu.swjtuhc.demo.model.Order">
+		insert into order
+		(oName,oUser,oComment)
+		values
+		(#{oName},#{oUser},#{oComment})
+	</insert>
+
+	<select id="selectOrderByOrdername" parameterType="java.lang.String" resultType="edu.swjtuhc.demo.model.Order">
+		select * from order
+		where
+		oName=#{oName}
+	</select>
+	
+	<resultMap type="edu.swjtuhc.demo.model.Order" id="order_result">
+		<id column="oId" property="oId" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+		<result column="oName" property="oName" javaType="java.lang.String" jdbcType="VARCHAR"/>
+		<result column="oUser" property="oUser" javaType="java.lang.String" jdbcType="VARCHAR"/>
+		<result column="oComment" property="oComment" javaType="java.lang.String" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<select id="selectAllOrderList" resultMap="order_result">
+		select * from goods
+	</select>
+	
+	
+	<delete id="delOrder" parameterType="java.lang.String">
+		delete from order
+		where
+		oName=#{oName}
+	</delete>
+	
+</mapper>

@@ -2,12 +2,13 @@ package edu.swjtuhc.demo.model;
 
 public class Goods {
 	 int gdID;
-	  int tID;
-	  @Override
-	public String toString() {
-		return "Goods [gdID=" + gdID + ", tID=" + tID + ", gdCode=" + gdCode + ", gdName=" + gdName + ", gdPrice="
-				+ gdPrice + ", gdQuantity=" + gdQuantity + ", gdSaleQty=" + gdSaleQty + ", gdInfo=" + gdInfo + "]";
-	}
+	 int tID;
+	 int gdCode;
+	 String gdName;
+	 int gdPrice;
+	 int gdQuantity;
+	 int gdSaleQty;
+	 String gdImage;
 	public int getGdID() {
 		return gdID;
 	}
@@ -20,10 +21,10 @@ public class Goods {
 	public void settID(int tID) {
 		this.tID = tID;
 	}
-	public String getGdCode() {
+	public int getGdCode() {
 		return gdCode;
 	}
-	public void setGdCode(String gdCode) {
+	public void setGdCode(int gdCode) {
 		this.gdCode = gdCode;
 	}
 	public String getGdName() {
@@ -32,10 +33,11 @@ public class Goods {
 	public void setGdName(String gdName) {
 		this.gdName = gdName;
 	}
-	public String getGdPrice() {
+	
+	public int getGdPrice() {
 		return gdPrice;
 	}
-	public void setGdPrice(String gdPrice) {
+	public void setGdPrice(int gdPrice) {
 		this.gdPrice = gdPrice;
 	}
 	public int getGdQuantity() {
@@ -50,17 +52,17 @@ public class Goods {
 	public void setGdSaleQty(int gdSaleQty) {
 		this.gdSaleQty = gdSaleQty;
 	}
-	public String getGdInfo() {
-		return gdInfo;
+	public String getGdImage() {
+		return gdImage;
 	}
-	public void setGdInfo(String gdInfo) {
-		this.gdInfo = gdInfo;
+	public void setGdImage(String gdImage) {
+		this.gdImage = gdImage;
 	}
-	String gdCode;
-	  String gdName;
-	  String gdPrice;
-	  int gdQuantity;
-	  int gdSaleQty;
-	  String gdInfo;
-
+	@Override
+	public String toString() {
+		return "Goods [gdID=" + gdID + ", tID=" + tID + ", gdCode=" + gdCode + ", gdName=" + gdName + ", gdPrice="
+				+ gdPrice + ", gdQuantity=" + gdQuantity + ", gdSaleQty=" + gdSaleQty + ", gdImage=" + gdImage + "]";
+	}
+	
+	
 }

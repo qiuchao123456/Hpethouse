@@ -1,17 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.swjtuhc.demo.mapper.GoodsMapper">
+
    <insert id="insertGoods" parameterType="edu.swjtuhc.demo.model.Goods">
           insert into goods
-          (gdID,tID,gdCode,gdName,gdPrice,gdQuantity,gdSaleQty,gdInfo)
-          values
-          (#{gdID},#{tID},#{gdCode},#{gdName},#{gdPrice},#{gdQuantity},#{gdSaleQty},#{gdInfo})
+          (gdID,tID,gdCode,gdName,gdPrice,gdQuantity,gdSaleQty,gdImage)
+          values 
+          (#{gdID},#{tID},#{gdCode},#{gdName},#{gdPrice},#{gdQuantity},#{gdSaleQty},#{gdImage})
    </insert>
 
    <select id="selectGoodsBygdName" parameterType="java.lang.String" resultType="edu.swjtuhc.demo.model.Goods">
-       select * from Goods
+       select * from goods
        where
-       gdID = #{gdID}
-      
+       gdName = #{gdName}
    </select>
+   
+   <resultMap type="edu.swjtuhc.demo.model.Goods" id="goods_result">
+   		<id column="gdID" property="gdID" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+   		<result column="tID" property="tID" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+   		<result column="gdCode" property="gdCode" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+   		<result column="gdName" property="gdName" javaType="java.lang.String" jdbcType="VARCHAR"/>
+   		<result column="gdPrice" property="gdPrice" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+   		<result column="gdQuantity" property="gdQuantity" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+   		<result column="gdSaleQty" property="gdSaleQty" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+   		<result column="gdImage" property="gdImage" javaType="java.lang.String" jdbcType="VARCHAR"/>
+   </resultMap>
+   
+   <select id="selectAllGoodsList" resultMap="goods_result">
+   		select * from goods
+   </select>
+   
+   <select id="queryGoodsList" resultMap="goods_result">
+   		select * from goods
+   		where
+   		gdID='1'
+   </select>
+   
+   <select id="selectAllGoods" parameterType="java.lang.String" resultType="edu.swjtuhc.demo.model.Goods">
+       select * from goods
+   </select>
+   
+   <delete id="delGoods" parameterType="java.lang.String">
+   		delete from goods
+   		where
+   		gdName = #{gdName}
+   </delete>
+   
+   <update id="alterGoods" parameterType="java.lang.String">
+   		update goods set
+   		gdName=#{gdName},gdPrice=#{gdPrice}
+   		where
+   		gdID=#{gdID}
+   </update>
+   
 </mapper>
